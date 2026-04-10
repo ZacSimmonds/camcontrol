@@ -52,3 +52,10 @@ python examples\basic_demo.py --com COM15
 - Serial speed is fixed at **115200 baud**.
 - Package name on PyPI and the import/package name are both `camcontrol`.
 - For development installs from source, you can use `pip install -e .` from the project folder.
+
+## Linux quickstart
+
+- Install: `pip install camcontrol`
+- List ports: `camcontrol list`
+- If you get `PermissionError` opening `/dev/ttyUSB0`, add your user to the `dialout` group and re-login:
+  - `sudo usermod -a -G dialout $USER`

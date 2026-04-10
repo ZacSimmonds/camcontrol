@@ -5,6 +5,7 @@ camcontrol/__init__.py
 camcontrol/cli.py
 camcontrol/device.py
 camcontrol/discovery.py
+camcontrol/discovery_linux.py
 camcontrol/discovery_windows.py
 camcontrol/exceptions.py
 camcontrol/interactive.py

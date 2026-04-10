@@ -38,18 +38,26 @@ def main() -> int:
 
     print(f"Connecting to {com} (115200)...")
     with SerialManager(cfg) as mgr:
-        for cmd in ["STATE", "TEMP"]:
-            print(f"\n> {cmd}")
-            for line in mgr.send_and_read_response(cmd):
+        while True:
+            for cmd in ["STATE", "TEMP"]:
+                print(f"\n> {cmd}")
+                for line in mgr.send_and_read_response(cmd):
+                    print(line)
+
+            print("\n> UNLOCK")
+            for line in mgr.send_and_read_response("UNLOCK"):
                 print(line)
 
-        print("\n> UNLOCK")
-        for line in mgr.send_and_read_response("UNLOCK"):
-            print(line)
+            print("\n> STATE")
+            for line in mgr.send_and_read_response("STATE"):
+                print(line)
 
-        print("\n> STATE")
-        for line in mgr.send_and_read_response("STATE"):
-            print(line)
+            try:
+                again = input("\nPress ENTER to run again, or type 'q' to quit: ").strip().lower()
+            except EOFError:
+                break
+            if again in {"q", "quit", "exit"}:
+                break
 
     return 0
 

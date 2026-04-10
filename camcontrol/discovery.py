@@ -27,4 +27,3 @@ def pick_default_device(devices: List[DeviceInfo]) -> Optional[DeviceInfo]:
     from .discovery_windows import pick_default_device as impl
 
     return impl(devices)
-

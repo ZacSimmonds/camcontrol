@@ -110,4 +110,3 @@ def pick_default_device(devices: List[DeviceInfo]) -> Optional[DeviceInfo]:
         return devices[0]
 
     return None
-

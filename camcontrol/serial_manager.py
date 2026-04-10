@@ -161,7 +161,7 @@ class SerialManager:
                 self._rx_queue.put(line)
 
         self._reader_thread = threading.Thread(
-            target=run, name="camlock-serial-reader", daemon=True
+            target=run, name="camcontrol-serial-reader", daemon=True
         )
         self._reader_thread.start()
         return self._rx_queue

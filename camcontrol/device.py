@@ -21,4 +21,3 @@ class DeviceInfo:
         if self.vid is None or self.pid is None:
             return ""
         return f"{self.vid:04X}:{self.pid:04X}"
-

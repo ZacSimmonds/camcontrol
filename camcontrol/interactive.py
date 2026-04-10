@@ -45,14 +45,14 @@ def run_interactive(
                 continue
             print(line)
 
-    t = threading.Thread(target=printer, name="camlock-interactive-printer", daemon=True)
+    t = threading.Thread(target=printer, name="camcontrol-interactive-printer", daemon=True)
     t.start()
 
     print("Interactive mode. Type commands and press ENTER. Ctrl+C or 'exit' to quit.")
     try:
         while True:
             try:
-                user = input("camlock> ")
+                user = input("camcontrol> ")
             except EOFError:
                 break
             cmd = user.strip()
@@ -68,4 +68,3 @@ def run_interactive(
         manager.stop_reader()
 
     return 0
-

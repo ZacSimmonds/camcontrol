@@ -1,3 +1,2 @@
 [console_scripts]
-camcontrol = camlock.cli:main
-camlock = camlock.cli:main
+camcontrol = camcontrol.cli:main

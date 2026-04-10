@@ -35,8 +35,8 @@ camcontrol send STATE --port 3
 ## Python usage
 
 ```python
-from camlock import SerialManager
-from camlock.serial_manager import SerialConfig
+from camcontrol import SerialManager
+from camcontrol.serial_manager import SerialConfig
 
 with SerialManager(SerialConfig(port="COM15")) as mgr:
     print(mgr.send_and_read_response("STATE"))
@@ -47,4 +47,4 @@ with SerialManager(SerialConfig(port="COM15")) as mgr:
 - Commands are sent as complete lines terminated by `\n` (never character-by-character).
 - Responses are read as line-based text; multi-line responses are collected until a blank line or timeout.
 - Serial speed is fixed at **115200 baud**.
-- Package name on PyPI is `camcontrol`. The import/package name is currently `camlock`.
+- Package name on PyPI and the import/package name are both `camcontrol`.

@@ -1,0 +1,8 @@
+recursive-exclude * __pycache__ *.pyc *.pyo
+recursive-exclude build *
+recursive-exclude dist *
+recursive-exclude *.egg-info *
+
+# Old pre-rename package directory (should not be distributed)
+recursive-exclude camlock *
+

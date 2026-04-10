@@ -7,7 +7,7 @@ import sys
 from typing import List, Optional
 
 from .discovery import find_devices, pick_default_device
-from .exceptions import CamlockError, ConnectionError, DiscoveryError, ProtocolError
+from .exceptions import CamcontrolError, ConnectionError, DiscoveryError, ProtocolError
 from .interactive import run_interactive
 from .serial_manager import SerialConfig, SerialManager
 
@@ -125,15 +125,15 @@ def cmd_interactive(args) -> int:
 
 
 def _program_name() -> str:
-    base = os.path.basename(sys.argv[0] or "camlock")
+    base = os.path.basename(sys.argv[0] or "camcontrol")
     name, _ext = os.path.splitext(base)
-    return name or "camlock"
+    return name or "camcontrol"
 
 
 def build_parser(prog: str) -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(
         prog=prog,
-        description="Camlock USB-serial CLI (fixed 115200 baud).",
+        description="Camcontrol USB-serial CLI (fixed 115200 baud).",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog=(
             "Examples:\n"
@@ -257,11 +257,11 @@ def _preprocess_argv(argv: List[str]) -> List[str]:
 
     out = list(argv)
 
-    # Allow: camlock COM15 <...>
+    # Allow: camcontrol COM15 <...>
     if re.fullmatch(r"COM\d+", out[0], flags=re.IGNORECASE):
         out = ["--com", out[0], *out[1:]]
 
-    # Allow: camlock [--com COM15] TEMP|STATE|HOLD ON  (default to send)
+    # Allow: camcontrol [--com COM15] TEMP|STATE|HOLD ON  (default to send)
     # Find first positional token after known options and their values.
     options_with_values = {"--com", "--read-timeout", "--write-timeout"}
     i = 0
@@ -283,7 +283,7 @@ def _preprocess_argv(argv: List[str]) -> List[str]:
         if not is_subcommand:
             out = out[:insert_at] + ["send"] + out[insert_at:]
 
-    # Allow: camlock help  (common muscle-memory)
+    # Allow: camcontrol help  (common muscle-memory)
     if out and out[0].lower() == "help":
         out = ["help", *out[1:]]
 
@@ -300,7 +300,7 @@ def main(argv: Optional[List[str]] = None) -> int:
     except (DiscoveryError, ConnectionError, ProtocolError) as exc:
         print(f"Error: {exc}", file=sys.stderr)
         return 2
-    except CamlockError as exc:
+    except CamcontrolError as exc:
         print(f"Error: {exc}", file=sys.stderr)
         return 2
     except KeyboardInterrupt:

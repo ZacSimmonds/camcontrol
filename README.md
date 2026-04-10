@@ -8,12 +8,6 @@ Windows-first Python CLI + library for communicating with Camlock USB serial dev
 pip install camcontrol
 ```
 
-## Install (editable / dev)
-
-```powershell
-pip install -e .
-```
-
 ## CLI usage
 
 ```powershell
@@ -57,3 +51,4 @@ python examples\basic_demo.py --com COM15
 - Responses are read as line-based text; multi-line responses are collected until a blank line or timeout.
 - Serial speed is fixed at **115200 baud**.
 - Package name on PyPI and the import/package name are both `camcontrol`.
+- For development installs from source, you can use `pip install -e .` from the project folder.

@@ -1,0 +1,41 @@
+Metadata-Version: 2.4
+Name: camlock
+Version: 0.1.0
+Summary: Python CLI + library for Camlock USB-serial access control devices (CH340).
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+Requires-Dist: pyserial>=3.5
+
+# camlock
+
+Windows-first Python CLI + library for communicating with Camlock USB serial devices (CH340), including PICO Hub-style line commands.
+
+## Install (editable)
+
+```powershell
+pip install -e .
+```
+
+## CLI usage
+
+```powershell
+camcontrol list
+camcontrol connect
+camcontrol send STATE
+camcontrol send UNLOCK
+camcontrol send TEMP
+camcontrol temp
+camcontrol interactive
+```
+
+Optional multi-channel flag (reserved for ACS200-style devices):
+
+```powershell
+camcontrol send STATE --port 3
+```
+
+## Notes
+
+- Commands are sent as complete lines terminated by `\n` (never character-by-character).
+- Responses are read as line-based text; multi-line responses are collected until a blank line or timeout.
+- Serial speed is fixed at **115200 baud**.

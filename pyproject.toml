@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "camcontrol"
+version = "0.1.1"
+description = "Python CLI + library for Camlock USB-serial access control devices (CH340)."
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = ["pyserial>=3.5"]
+
+[project.scripts]
+camcontrol = "camlock.cli:main"
+camlock = "camlock.cli:main"
+
+[tool.setuptools]
+packages = ["camlock"]

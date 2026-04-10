@@ -1,0 +1,16 @@
+README.md
+pyproject.toml
+camlock/__init__.py
+camlock/cli.py
+camlock/device.py
+camlock/discovery.py
+camlock/discovery_windows.py
+camlock/exceptions.py
+camlock/interactive.py
+camlock/serial_manager.py
+camlock.egg-info/PKG-INFO
+camlock.egg-info/SOURCES.txt
+camlock.egg-info/dependency_links.txt
+camlock.egg-info/entry_points.txt
+camlock.egg-info/requires.txt
+camlock.egg-info/top_level.txt

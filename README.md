@@ -42,6 +42,15 @@ with SerialManager(SerialConfig(port="COM15")) as mgr:
     print(mgr.send_and_read_response("STATE"))
 ```
 
+## Example app
+
+Run the included example script:
+
+```powershell
+python examples\basic_demo.py
+python examples\basic_demo.py --com COM15
+```
+
 ## Notes
 
 - Commands are sent as complete lines terminated by `\n` (never character-by-character).
